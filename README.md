@@ -15,7 +15,21 @@ L’interface graphique permet de :
 
 Le projet se compose de plusieurs répertoires :
 
-<pre> ```bash 📁 SlotMachineGame/ │ ├── ClassesTP/ # Classes C++ : logique métier (BanditIHM, Combinaison…) │ ├── BanditIHM.h / .cpp │ ├── Combinaison.h / .cpp │ └── Conversion.h / .cpp # Conversion String^ → char* │ ├── FichiersInit/ # Fichiers d’initialisation (.smb, .cmb) ├── FichiersOutput/ # Fichiers générés après paramétrage ├── Images/ # Ressources graphiques (symboles) │ ├── MyForm.h / .cpp # Formulaire principal du jeu ├── ParametrageForm.h / .cpp# Formulaire de paramétrage │ └── SlotMachineGame.sln # Solution Visual Studio .NET ``` </pre>
+SlotMachineGame/
+│
+├── ClassesTP/ # Classes C++ utilisées pour la logique métier
+│ ├── BanditIHM.h / .cpp
+│ ├── Combinaison.h / .cpp
+│ └── Conversion.h / .cpp # Conversion String^ → char*
+│
+├── FichiersInit/ # Fichiers d’initialisation (.smb, .cmb)
+├── FichiersOutput/ # Fichiers générés par le paramétrage
+├── Images/ # Ressources graphiques (symboles)
+│
+├── MyForm.h / .cpp # Formulaire principal du jeu
+├── ParametrageForm.h / .cpp# Formulaire de paramétrage
+│
+└── SlotMachineGame.sln # Solution Visual Studio .NET
 
 ---
 
