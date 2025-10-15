@@ -11,31 +11,26 @@ L’interface graphique permet de :
 
 ---
 
-## Structure du projet
+## 🗂️ Structure du projet
 
 Le projet se compose de plusieurs répertoires :
 
-SlotMachineGame/
-│
-├── ClassesTP/ # Classes C++ utilisées pour la logique métier
-│ ├── BanditIHM.h / .cpp
-│ ├── Combinaison.h / .cpp
-│ └── Conversion.h / .cpp # Conversion String^ → char*
-│
-├── FichiersInit/ # Fichiers d’initialisation (.smb, .cmb)
-├── FichiersOutput/ # Fichiers générés par le paramétrage
-├── Images/ # Ressources graphiques (symboles)
-│
-├── MyForm.h / .cpp # Formulaire principal du jeu
-├── ParametrageForm.h / .cpp# Formulaire de paramétrage
-│
-└── SlotMachineGame.sln # Solution Visual Studio .NET
+| Dossier/Fichier | Description |
+|------------------|-------------|
+| `ClassesTP/` | Classes C++ pour la logique métier (`BanditIHM`, `Combinaison`, etc.) |
+| `FichiersInit/` | Fichiers d’initialisation (.smb, .cmb) |
+| `FichiersOutput/` | Fichiers de sortie créés après paramétrage |
+| `Images/` | Ressources graphiques du jeu |
+| `MyForm.h / .cpp` | Formulaire principal (interface du jeu) |
+| `ParametrageForm.h / .cpp` | Formulaire de paramétrage |
+| `SlotMachineGame.sln` | Fichier de solution Visual Studio |
+
 
 ---
 
 ## 🕹️ Fonctionnalités principales
 
-### 🎮 Formulaire de Jeu (`MyForm`)
+### Formulaire de Jeu (`MyForm`)
 - **Mise** : via un `NumericUpDown` (valeur modifiable par clic ou clavier)
 - **Jouer** : bouton **Go** pour lancer une partie
 - **Affichage des résultats** :
