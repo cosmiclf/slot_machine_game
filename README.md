@@ -1,72 +1,71 @@
-# Slot Machine Game — Projet IHM C++/.NET
+# 🎰 Slot Machine Game — IHM Project (C++ / .NET Framework)
 
-## Présentation
-Ce projet a été réalisé dans le cadre du module **Mise en œuvre d'Interfaces Homme-Machine (IHM)** à **Télécom Physique Strasbourg**.
+## 📘 Overview
+This project was developed as part of the **Human–Machine Interface (IHM)** module at **Télécom Physique Strasbourg**.
 
-L’objectif est de développer une application Windows Forms en **C++/CLI (.NET Framework)** simulant le fonctionnement d’une **machine à sous**.  
-L’interface graphique permet de :
-- Paramétrer la machine (symboles et combinaisons gagnantes)
-- Jouer et miser
-- Afficher les gains et pertes cumulés
-
----
-
-## 🗂️ Structure du projet
-
-Le projet se compose de plusieurs répertoires :
-
-| Dossier/Fichier | Description |
-|------------------|-------------|
-| `ClassesTP/` | Classes C++ pour la logique métier (`BanditIHM`, `Combinaison`, etc.) |
-| `FichiersInit/` | Fichiers d’initialisation (.smb, .cmb) |
-| `FichiersOutput/` | Fichiers de sortie créés après paramétrage |
-| `Images/` | Ressources graphiques du jeu |
-| `MyForm.h / .cpp` | Formulaire principal (interface du jeu) |
-| `ParametrageForm.h / .cpp` | Formulaire de paramétrage |
-| `SlotMachineGame.sln` | Fichier de solution Visual Studio |
-
+The goal is to create a **Windows Forms** application in **C++/CLI (.NET Framework)** that simulates the behavior of a **slot machine**.  
+The graphical interface allows the user to:
+- Configure the machine (symbols and winning combinations)
+- Place bets and play
+- Display total wins and losses
 
 ---
 
-## 🕹️ Fonctionnalités principales
+## 🗂️ Project Structure
 
-### Formulaire de Jeu (`MyForm`)
-- **Mise** : via un `NumericUpDown` (valeur modifiable par clic ou clavier)
-- **Jouer** : bouton **Go** pour lancer une partie
-- **Affichage des résultats** :
-  - Combinaison tirée (`PictureBox`)
-  - Gain affiché dans une `MessageBox`
-  - Total des gains/pertes affiché (`Label`)
-- **Réinitialisation des gains** : via le `MenuStrip`
-- **Chargement des fichiers de configuration** : ouvre le formulaire de paramétrage
+The project is organized as follows:
 
-**Implémentation technique :**
-- Instanciation du `BanditIHM` dans le constructeur de `MyForm`
-- Destruction automatique lors de la fermeture du formulaire
-- Utilisation d’une `ImageList` pour stocker et réutiliser efficacement les images des symboles
+| Folder/File | Description |
+|--------------|-------------|
+| `ClassesTP/` | C++ classes handling the core game logic (`BanditIHM`, `Combinaison`, etc.) |
+| `FichiersInit/` | Initialization files (`.smb`, `.cmb`) |
+| `FichiersOutput/` | Files generated after configuration |
+| `Images/` | Graphic resources (slot symbols) |
+| `MyForm.h / .cpp` | Main game form (user interface) |
+| `ParametrageForm.h / .cpp` | Configuration form |
+| `SlotMachineGame.sln` | Visual Studio solution file |
 
 ---
 
-### ⚙️ Formulaire de Paramétrage (`ParametrageForm`)
-- Chargement des fichiers `.smb` et `.cmb` (symboles et combinaisons)
-- Visualisation des contenus dans des `ListBox`
-- Sélection des combinaisons gagnantes
-- Enregistrement des paramètres dans `FichiersOutput/`
-- Fermeture contrôlée du formulaire via un bouton dédié (et non le “X”)
+## 🕹️ Main Features
 
-**Contraintes et logiques d’accès :**
-- Ce formulaire s’affiche **avant** le jeu
-- Impossible de jouer sans avoir initialisé la machine
-- Le formulaire peut être rouvert depuis le jeu
-- Communication entre formulaires via **événement personnalisé**
-  déclenchant `Modifier_fichiers_jeu()` dans `MyForm`
+### 🎮 Game Form (`MyForm`)
+- **Betting**: via a `NumericUpDown` (modifiable with mouse or keyboard)
+- **Play**: press the **Go** button to start a round
+- **Results Display**:
+  - Drawn combination shown in `PictureBox`
+  - Winnings displayed through a `MessageBox`
+  - Total balance shown in a `Label`
+- **Reset total gains**: through a `MenuStrip`
+- **Load configuration files**: opens the configuration form
+
+**Technical details:**
+- The `BanditIHM` object is instantiated in the `MyForm` constructor
+- Automatically destroyed when the form closes
+- An `ImageList` is used to efficiently store and reuse all symbol images
 
 ---
 
-## Aspects techniques notables
+### ⚙️ Configuration Form (`ParametrageForm`)
+- Load `.smb` and `.cmb` files (symbols and winning combinations)
+- Display file contents in `ListBox` controls
+- Allow user to select winning combinations
+- Save chosen configuration to `FichiersOutput/`
+- Controlled closing via a dedicated button (not the “X”)
 
-### 🔄 Conversion String ↔ char*
-Utilisation d’une fonction utilitaire :
+**Behavior and access logic:**
+- This form appears **before** the main game form
+- The game cannot start until initialization is complete
+- The configuration form can be reopened from the game window
+- Communication between forms is handled via a **custom event**  
+  triggering the `Modifier_fichiers_jeu()` method in `MyForm`
+
+---
+
+## 🧠 Technical Notes
+
+### 🔄 String ↔ char* Conversion
+A small helper function is used to convert between .NET `String^` and native `char*`:
 ```cpp
 char* string2char(System::String^ chaineVS) {
     char* chaine = new char[chaineVS->ToCharArray()->Length + 1];
@@ -75,4 +74,3 @@ char* string2char(System::String^ chaineVS) {
     chaine[chaineVS->ToCharArray()->Length] = '\0';
     return chaine;
 }
-
