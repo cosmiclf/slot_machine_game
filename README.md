@@ -62,7 +62,7 @@ The project is organized as follows:
 
 ---
 
-## 🧠 Technical Notes
+## Technical Notes
 
 ### 🔄 String ↔ char* Conversion
 A small helper function is used to convert between .NET `String^` and native `char*`:
